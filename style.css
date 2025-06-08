@@ -1,0 +1,185 @@
+/* Add your CSS here */
+
+/* Set a basic Intel-branded blue background for the header */
+header {
+  background-color: #0071c5; /* Intel blue */
+  color: white; /* White text for contrast */
+  padding: 40px 0; /* Add space above and below */
+  text-align: center; /* Center all header content */
+  position: relative; /* Needed for background image overlay */
+  overflow: hidden; /* Hide overflow from background image */
+}
+
+/* Add a background image with low opacity using a pseudo-element */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('img/intel_bg.jpg'); /* Intel background image */
+  background-size: cover; /* Cover the whole header */
+  background-position: center;
+  opacity: 0.35; /* Increased opacity for more visible background */
+  z-index: 0; /* Place behind the header content */
+}
+
+/* Make sure header content stays above the background image */
+header > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Style the logo image */
+header img {
+  width: 120px; /* Set a reasonable logo size */
+  display: block;
+  margin: 0 auto 20px auto; /* Center logo and add space below */
+}
+
+/* Style the main heading */
+header h1 {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif; /* Simple, clean font */
+}
+
+/* Style the subheading/description */
+header p {
+  font-size: 1.1em;
+  max-width: 500px; /* Limit width for readability */
+  margin: 0 auto; /* Center the paragraph */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Use Intel-inspired font and color palette for the whole page */
+body {
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif; /* Intel-like font */
+  background-color: #eaf1fb; /* Very light blue background */
+  color: #222; /* Dark text for readability */
+  margin: 0;
+  padding: 0;
+}
+
+/* Enhance section spacing for a clean look */
+section {
+  /* On large screens, allow horizontal scrolling */
+  display: flex; /* Arrange cards in a row */
+  overflow-x: auto; /* Enable horizontal scroll if needed */
+  gap: 20px; /* Space between cards */
+  padding: 30px 10px; /* Add some space around the timeline */
+  margin-bottom: 40px; /* Add space below the timeline */
+  scroll-snap-type: x mandatory; /* Enable horizontal snap */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+}
+
+/* Timeline card styles */
+section > div {
+  background: #f5f7fa; /* Light background for cards */
+  border-radius: 10px; /* Rounded corners */
+  border: 1px solid #d0e2f2; /* Subtle blue border */
+  box-shadow: 0 2px 8px rgba(0,113,197,0.07); /* Intel blue shadow */
+  min-width: 225px;    /* 10% smaller than 250px */
+  max-width: 243px;    /* 10% smaller than 270px */
+  flex: 0 0 225px;     /* 10% smaller than 250px */
+  padding: 18px;       /* Slightly reduced padding */
+  text-align: center;
+  transition: 
+    transform 0.2s, 
+    box-shadow 0.2s; /* Smooth transform and shadow on hover */
+  scroll-snap-align: start; /* Snap each card to the start of the scroll area */
+}
+
+/* Add a simple hover effect for interactivity */
+section > div:hover {
+  transform: scale(1.06) rotate(-1deg); /* Slight scale and rotate for dynamic effect */
+  box-shadow: 0 8px 24px rgba(0,113,197,0.18); /* Stronger shadow on hover */
+}
+
+/* Make images fit nicely inside cards */
+/* This rule ensures all images, including new ones, have the same width and height */
+section > div img {
+  width: 100%;        /* Image fills the card width */
+  max-width: 225px;    /* 10% smaller than 250px */
+  height: 90px;        /* 10% smaller than 100px */
+  object-fit: cover;  /* Crop image to fit the area without distortion */
+  border-radius: 6px;
+  margin-bottom: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Headings inside cards */
+section > div h2 {
+  color: #0071c5; /* Intel blue for years */
+  font-size: 1.5em;
+  margin: 0 0 8px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+section > div h3 {
+  color: #005792; /* Slightly darker blue for subheadings */
+  font-size: 1.1em;
+  margin: 0 0 10px 0;
+  font-weight: normal;
+}
+
+/* Timeline card text */
+section > div p {
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0 0 8px 0;
+}
+
+/* Hide extra details in each card by default */
+section > div .details {
+  max-height: 0;           /* Hide content */
+  overflow: hidden;        /* Prevent overflow */
+  transition: max-height 0.4s ease; /* Smooth reveal */
+  opacity: 0;              /* Hide visually */
+  margin-top: 0;
+}
+
+/* Show details smoothly when hovering over the card */
+section > div:hover .details {
+  max-height: 200px;       /* Enough space for details */
+  opacity: 1;              /* Make visible */
+  margin-top: 10px;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+/* Details text styling */
+section > div .details p {
+  color: #0071c5; /* Intel blue for details */
+  font-size: 0.97em;
+  background: #eaf1fb;
+  border-radius: 5px;
+  padding: 8px 6px;
+  margin: 0;
+}
+
+/* Responsive: Stack cards vertically on small screens */
+@media (max-width: 700px) {
+  section {
+    flex-direction: column; /* Stack cards vertically */
+    gap: 16px;
+    overflow-x: visible; /* No horizontal scroll needed */
+    align-items: center; /* Center cards */
+  }
+  section > div {
+    max-width: 95vw; /* Make cards fit the screen */
+    min-width: 0;
+  }
+  header h1 {
+    font-size: 1.3em; /* Smaller heading on mobile */
+    padding: 0 10px;  /* Add side padding for better fit */
+  }
+  header p {
+    font-size: 1em;   /* Slightly smaller subheading */
+    padding: 0 10px;  /* Add side padding for better fit */
+    max-width: 95vw;  /* Prevent overflow */
+  }
+}
