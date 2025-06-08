@@ -11,12 +11,19 @@ body {
   color: #222;
   margin: 0;
   padding: 0;
+  text-align: left; /* By default, align text to the left for LTR languages */
+}
+
+/* Add a class for RTL tweaks if needed */
+body.rtl {
+  direction: rtl;
+  text-align: right; /* For RTL languages, align text to the right */
 }
 
 /* Header styles */
 header {
-  background-color: #0071c5;
-  color: white;
+  background-color: #005792; /* Darker blue for higher contrast */
+  color: #fff;
   position: relative;
   overflow: hidden;
 }
@@ -54,6 +61,7 @@ header h1 {
   font-size: 2.2em;
   margin-bottom: 10px;
   font-family: Arial, Helvetica, sans-serif;
+  color: #fff; /* Stronger contrast */
 }
 
 /* Subheading/description */
@@ -62,14 +70,15 @@ header p {
   max-width: 500px;
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  color: #f8f9fa; /* Lighter text for contrast */
 }
 
 /* Timeline card styles (Bootstrap .card is used) */
 .card {
   border-radius: 10px;
-  border: 1px solid #d0e2f2;
+  border: 1px solid #0071c5; /* Stronger blue border */
   box-shadow: 0 2px 8px rgba(0,113,197,0.07);
-  background: #f5f7fa;
+  background: #fff; /* White background for best contrast */
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -90,27 +99,39 @@ header p {
 
 /* Card headings */
 .card-title {
-  color: #0071c5;
+  color: #005792; /* Darker blue for better contrast */
   letter-spacing: 1px;
 }
 
 .card h3 {
-  color: #005792;
+  color: #0071c5; /* Use Intel blue for subheadings */
 }
 
 /* Accordion styles for details */
+.accordion-button {
+  background-color: #eaf1fb;
+  color: #005792;
+}
+
 .accordion-button:focus {
   box-shadow: 0 0 0 2px #0071c5;
 }
 
+/* Accordion body text */
+.accordion-body {
+  color: #222;
+  background: #f5f7fa;
+}
+
 /* Subscription form styles */
 form {
+  background: #f5f7fa !important;
   /* Use Bootstrap classes for most styling */
 }
 
 /* Footer styles */
 footer {
-  background: #0071c5;
+  background: #00335a; /* Even darker blue for strong contrast */
   color: #fff;
 }
 
@@ -123,6 +144,38 @@ footer a {
 footer a:focus, footer a:hover {
   color: #ffd700;
   outline: 2px solid #ffd700;
+  background: #222;
+}
+
+/* Button colors for contrast */
+.btn-primary, .btn-info, .btn-success {
+  color: #fff !important;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.btn-primary {
+  background-color: #005792;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #00335a;
+}
+
+.btn-info {
+  background-color: #0071c5;
+}
+
+.btn-info:hover, .btn-info:focus {
+  background-color: #005792;
+}
+
+.btn-success {
+  background-color: #198754;
+}
+
+.btn-success:hover, .btn-success:focus {
+  background-color: #145c32;
 }
 
 /* Responsive tweaks for mobile */
