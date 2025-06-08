@@ -1,13 +1,24 @@
-/* Add your CSS here */
+/* 
+  Custom styles for Intel Sustainability Timeline
+  This file adds extra styling on top of Bootstrap.
+*/
 
-/* Set a basic Intel-branded blue background for the header */
+/* RTL support: Bootstrap handles most RTL, but add custom fixes if needed */
+body {
+  direction: rtl; /* Ensure right-to-left text flow */
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  background-color: #eaf1fb;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header styles */
 header {
-  background-color: #0071c5; /* Intel blue */
-  color: white; /* White text for contrast */
-  padding: 40px 0; /* Add space above and below */
-  text-align: center; /* Center all header content */
-  position: relative; /* Needed for background image overlay */
-  overflow: hidden; /* Hide overflow from background image */
+  background-color: #0071c5;
+  color: white;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Add a background image with low opacity using a pseudo-element */
@@ -18,168 +29,127 @@ header::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('img/intel_bg.jpg'); /* Intel background image */
-  background-size: cover; /* Cover the whole header */
+  background-image: url('img/intel_bg.jpg');
+  background-size: cover;
   background-position: center;
-  opacity: 0.35; /* Increased opacity for more visible background */
-  z-index: 0; /* Place behind the header content */
+  opacity: 0.35;
+  z-index: 0;
 }
 
 /* Make sure header content stays above the background image */
-header > div {
+header > .container {
   position: relative;
   z-index: 1;
 }
 
 /* Style the logo image */
 header img {
-  width: 120px; /* Set a reasonable logo size */
+  width: 120px;
   display: block;
-  margin: 0 auto 20px auto; /* Center logo and add space below */
+  margin: 0 auto 20px auto;
 }
 
-/* Style the main heading */
+/* Main heading */
 header h1 {
   font-size: 2.2em;
   margin-bottom: 10px;
-  font-family: Arial, Helvetica, sans-serif; /* Simple, clean font */
-}
-
-/* Style the subheading/description */
-header p {
-  font-size: 1.1em;
-  max-width: 500px; /* Limit width for readability */
-  margin: 0 auto; /* Center the paragraph */
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Use Intel-inspired font and color palette for the whole page */
-body {
-  font-family: 'Segoe UI', Arial, Helvetica, sans-serif; /* Intel-like font */
-  background-color: #eaf1fb; /* Very light blue background */
-  color: #222; /* Dark text for readability */
-  margin: 0;
-  padding: 0;
+/* Subheading/description */
+header p {
+  font-size: 1.1em;
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Enhance section spacing for a clean look */
-section {
-  /* On large screens, allow horizontal scrolling */
-  display: flex; /* Arrange cards in a row */
-  overflow-x: auto; /* Enable horizontal scroll if needed */
-  gap: 20px; /* Space between cards */
-  padding: 30px 10px; /* Add some space around the timeline */
-  margin-bottom: 40px; /* Add space below the timeline */
-  scroll-snap-type: x mandatory; /* Enable horizontal snap */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+/* Timeline card styles (Bootstrap .card is used) */
+.card {
+  border-radius: 10px;
+  border: 1px solid #d0e2f2;
+  box-shadow: 0 2px 8px rgba(0,113,197,0.07);
+  background: #f5f7fa;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Timeline card styles */
-section > div {
-  background: #f5f7fa; /* Light background for cards */
-  border-radius: 10px; /* Rounded corners */
-  border: 1px solid #d0e2f2; /* Subtle blue border */
-  box-shadow: 0 2px 8px rgba(0,113,197,0.07); /* Intel blue shadow */
-  min-width: 225px;    /* 10% smaller than 250px */
-  max-width: 243px;    /* 10% smaller than 270px */
-  flex: 0 0 225px;     /* 10% smaller than 250px */
-  padding: 18px;       /* Slightly reduced padding */
-  text-align: center;
-  transition: 
-    transform 0.2s, 
-    box-shadow 0.2s; /* Smooth transform and shadow on hover */
-  scroll-snap-align: start; /* Snap each card to the start of the scroll area */
+/* Card hover effect */
+.card:hover, .card:focus-within {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 8px 24px rgba(0,113,197,0.18);
+  outline: 2px solid #0071c5;
 }
 
-/* Add a simple hover effect for interactivity */
-section > div:hover {
-  transform: scale(1.06) rotate(-1deg); /* Slight scale and rotate for dynamic effect */
-  box-shadow: 0 8px 24px rgba(0,113,197,0.18); /* Stronger shadow on hover */
+/* Card images */
+.card-img-top {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
 }
 
-/* Make images fit nicely inside cards */
-/* This rule ensures all images, including new ones, have the same width and height */
-section > div img {
-  width: 100%;        /* Image fills the card width */
-  max-width: 225px;    /* 10% smaller than 250px */
-  height: 90px;        /* 10% smaller than 100px */
-  object-fit: cover;  /* Crop image to fit the area without distortion */
-  border-radius: 6px;
-  margin-bottom: 12px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Headings inside cards */
-section > div h2 {
-  color: #0071c5; /* Intel blue for years */
-  font-size: 1.5em;
-  margin: 0 0 8px 0;
-  font-weight: bold;
+/* Card headings */
+.card-title {
+  color: #0071c5;
   letter-spacing: 1px;
 }
 
-section > div h3 {
-  color: #005792; /* Slightly darker blue for subheadings */
-  font-size: 1.1em;
-  margin: 0 0 10px 0;
-  font-weight: normal;
+.card h3 {
+  color: #005792;
 }
 
-/* Timeline card text */
-section > div p {
-  font-size: 1em;
-  line-height: 1.5;
-  margin: 0 0 8px 0;
+/* Accordion styles for details */
+.accordion-button:focus {
+  box-shadow: 0 0 0 2px #0071c5;
 }
 
-/* Hide extra details in each card by default */
-section > div .details {
-  max-height: 0;           /* Hide content */
-  overflow: hidden;        /* Prevent overflow */
-  transition: max-height 0.4s ease; /* Smooth reveal */
-  opacity: 0;              /* Hide visually */
-  margin-top: 0;
+/* Subscription form styles */
+form {
+  /* Use Bootstrap classes for most styling */
 }
 
-/* Show details smoothly when hovering over the card */
-section > div:hover .details {
-  max-height: 200px;       /* Enough space for details */
-  opacity: 1;              /* Make visible */
-  margin-top: 10px;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
+/* Footer styles */
+footer {
+  background: #0071c5;
+  color: #fff;
 }
 
-/* Details text styling */
-section > div .details p {
-  color: #0071c5; /* Intel blue for details */
-  font-size: 0.97em;
-  background: #eaf1fb;
-  border-radius: 5px;
-  padding: 8px 6px;
-  margin: 0;
+/* Ensure links in footer are visible and accessible */
+footer a {
+  color: #fff;
+  text-decoration: underline;
 }
 
-/* Responsive: Stack cards vertically on small screens */
+footer a:focus, footer a:hover {
+  color: #ffd700;
+  outline: 2px solid #ffd700;
+}
+
+/* Responsive tweaks for mobile */
 @media (max-width: 700px) {
-  section {
-    flex-direction: column; /* Stack cards vertically */
-    gap: 16px;
-    overflow-x: visible; /* No horizontal scroll needed */
-    align-items: center; /* Center cards */
-  }
-  section > div {
-    max-width: 95vw; /* Make cards fit the screen */
-    min-width: 0;
-  }
   header h1 {
-    font-size: 1.3em; /* Smaller heading on mobile */
-    padding: 0 10px;  /* Add side padding for better fit */
+    font-size: 1.3em;
+    padding: 0 10px;
   }
   header p {
-    font-size: 1em;   /* Slightly smaller subheading */
-    padding: 0 10px;  /* Add side padding for better fit */
-    max-width: 95vw;  /* Prevent overflow */
+    font-size: 1em;
+    padding: 0 10px;
+    max-width: 95vw;
+  }
+  .card-img-top {
+    height: 90px;
   }
 }
+
+/* Focus style for accessibility on buttons and links */
+.btn:focus, .btn:active, .accordion-button:focus {
+  outline: 2px solid #005792 !important;
+  outline-offset: 2px;
+}
+
+/* Extra: Ensure good color contrast for accessibility */
+.btn-primary, .btn-info, .btn-success {
+  color: #fff !important;
+}
+
+/* Hide scrollbars for timeline if needed (handled by Bootstrap grid now) */
