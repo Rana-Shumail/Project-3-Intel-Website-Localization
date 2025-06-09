@@ -78,6 +78,16 @@ header p {
   color: #f8f9fa; /* Lighter text for contrast */
 }
 
+/* Make the hero subheading fit in two lines by reducing max-width and vertical spacing */
+.hero-subheading {
+  max-width: 370px;        /* Make the box narrower so the period stays at the end of line 1 */
+  margin: 0 auto;          /* Center horizontally */
+  padding-top: 0.2em;      /* Reduce top padding */
+  padding-bottom: 0.2em;   /* Reduce bottom padding */
+  line-height: 1.2;        /* Slightly tighter line spacing */
+  word-break: normal;      /* Prevent breaking words in the middle */
+}
+
 /* Timeline card styles (Bootstrap .card is used) */
 .card {
   border-radius: 10px;
