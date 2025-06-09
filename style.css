@@ -49,6 +49,11 @@ header > .container {
   z-index: 1;
 }
 
+/* Center the hero section content */
+header .container {
+  text-align: center; /* Center all content inside header */
+}
+
 /* Style the logo image */
 header img {
   width: 120px;
@@ -78,7 +83,7 @@ header p {
   border-radius: 10px;
   border: 1px solid #0071c5; /* Stronger blue border */
   box-shadow: 0 2px 8px rgba(0,113,197,0.07);
-  background: #fff; /* White background for best contrast */
+  background: #ffffff; /* White background for best contrast */
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -131,7 +136,7 @@ form {
 
 /* Footer styles */
 footer {
-  background: #00335a; /* Even darker blue for strong contrast */
+  background: #00335a; /* Dark Intel blue for footer */
   color: #fff;
 }
 
